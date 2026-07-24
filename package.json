@@ -1,0 +1,29 @@
+{
+  "name": "hiresmart-ai-client",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "React frontend for HireSmart AI",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "latest",
+    "@tailwindcss/vite": "latest",
+    "@vitejs/plugin-react": "latest",
+    "axios": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-hook-form": "^7.81.0",
+    "react-redux": "latest",
+    "react-router-dom": "latest",
+    "react-toastify": "latest",
+    "tailwindcss": "latest"
+  },
+  "devDependencies": {
+    "vite": "latest"
+  }
+}
