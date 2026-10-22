@@ -34,16 +34,16 @@ const MobileSidebar = ({ links, title }) => {
         className="absolute inset-0 bg-slate-950/50"
         onClick={() => dispatch(closeMobileSidebar())}
       />
-      <aside className="relative flex h-full w-80 max-w-[86vw] flex-col bg-slate-950 text-white shadow-xl">
-        <div className="flex h-16 items-center justify-between border-b border-slate-800 px-4">
+      <aside className="relative flex h-full w-80 max-w-[86vw] flex-col bg-white text-slate-950 shadow-xl dark:bg-slate-950 dark:text-white">
+        <div className="flex h-16 items-center justify-between border-b border-slate-200 px-4 dark:border-slate-800">
           <div>
             <p className="text-sm font-bold">{title}</p>
-            <p className="text-xs text-slate-400">Secure workspace</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Secure workspace</p>
           </div>
           <button
             type="button"
             onClick={() => dispatch(closeMobileSidebar())}
-            className="rounded-md p-2 text-slate-300 hover:bg-slate-800 hover:text-white"
+            className="rounded-md p-2 text-slate-600 hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
             aria-label="Close sidebar"
           >
             <X className="h-5 w-5" aria-hidden="true" />
@@ -56,7 +56,9 @@ const MobileSidebar = ({ links, title }) => {
               onClick={() => dispatch(closeMobileSidebar())}
               className={({ isActive }) =>
                 `mb-3 flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold ${
-                  isActive ? "bg-blue-600 text-white" : "bg-slate-900 text-blue-100"
+                  isActive
+                    ? "bg-blue-600 text-white"
+                    : "bg-blue-50 text-blue-700 dark:bg-slate-900 dark:text-blue-100"
                 }`
               }
             >
@@ -73,7 +75,9 @@ const MobileSidebar = ({ links, title }) => {
                 onClick={() => dispatch(closeMobileSidebar())}
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold ${
-                    isActive ? "bg-blue-600 text-white" : "text-slate-300 hover:bg-slate-900"
+                    isActive
+                      ? "bg-blue-600 text-white"
+                      : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-900"
                   }`
                 }
               >
@@ -83,14 +87,14 @@ const MobileSidebar = ({ links, title }) => {
             );
           })}
         </nav>
-        <div className="border-t border-slate-800 p-4">
-          <div className="mb-3 rounded-lg bg-slate-900 p-3">
-            <p className="truncate text-sm font-bold text-white">{user?.name || "User"}</p>
-            <p className="truncate text-xs font-semibold uppercase text-slate-400">
+        <div className="border-t border-slate-200 p-4 dark:border-slate-800">
+          <div className="mb-3 rounded-lg bg-slate-100 p-3 dark:bg-slate-900">
+            <p className="truncate text-sm font-bold text-slate-950 dark:text-white">{user?.name || "User"}</p>
+            <p className="truncate text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">
               {company?.name || user?.role || "role"}
             </p>
           </div>
-          <Button variant="secondary" loading={loading} onClick={handleLogout} className="w-full bg-slate-900">
+          <Button variant="secondary" loading={loading} onClick={handleLogout} className="w-full bg-slate-100 text-slate-950 hover:bg-slate-200 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800">
             Logout
           </Button>
         </div>

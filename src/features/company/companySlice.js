@@ -76,13 +76,9 @@ export const initializeCompany = createAsyncThunk(
   "company/initializeCompany",
   async (_, { getState, dispatch, rejectWithValue }) => {
     try {
-      const { auth, company } = getState();
+      const { auth } = getState();
 
       if (!auth.isAuthenticated || auth.user?.role !== "hr") {
-        return { skip: true };
-      }
-
-      if (company.initializing || company.loading) {
         return { skip: true };
       }
 
@@ -176,6 +172,7 @@ const companySlice = createSlice({
       })
       .addCase(initializeCompany.fulfilled, (state, action) => {
         state.initializing = false;
+        state.loading = false;
         if (!action.payload?.skip) {
           applyStatus(state, action.payload);
           if (action.payload.company) {
@@ -185,6 +182,7 @@ const companySlice = createSlice({
       })
       .addCase(initializeCompany.rejected, (state, action) => {
         state.initializing = false;
+        state.loading = false;
         state.error = action.payload;
       });
   }

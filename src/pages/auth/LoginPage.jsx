@@ -186,14 +186,14 @@ const LoginPage = () => {
           ) : null}
         </div>
 
-        <aside className="hidden bg-slate-950 p-10 text-white lg:flex lg:flex-col lg:justify-between">
+        <aside className="hidden bg-slate-100 p-10 text-slate-950 lg:flex lg:flex-col lg:justify-between dark:bg-slate-950 dark:text-white">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-sm font-semibold text-blue-100">
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-semibold text-blue-700 dark:border-white/10 dark:bg-white/10 dark:text-blue-100">
               <Sparkles className="h-4 w-4" aria-hidden="true" />
               Smarter hiring starts here
             </div>
             <h2 className="mt-6 text-4xl font-bold">Your recruiting command center, ready when you are.</h2>
-            <p className="mt-4 text-sm leading-6 text-slate-300">
+            <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">
               Review parsed resumes, compare AI scores and keep candidate decisions moving in a secure team workspace.
             </p>
           </div>
@@ -201,14 +201,14 @@ const LoginPage = () => {
             {highlights.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.label} className="flex items-center gap-3 rounded-lg bg-white/10 p-4">
-                  <Icon className="h-5 w-5 text-blue-300" aria-hidden="true" />
+                <div key={item.label} className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-4 dark:border-transparent dark:bg-white/10">
+                  <Icon className="h-5 w-5 text-blue-600 dark:text-blue-300" aria-hidden="true" />
                   <span className="text-sm font-semibold">{item.label}</span>
                 </div>
               );
             })}
-            <div className="mt-4 rounded-lg border border-white/10 bg-white/5 p-4">
-              <p className="flex items-center gap-2 text-sm font-semibold text-blue-100">
+            <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5">
+              <p className="flex items-center gap-2 text-sm font-semibold text-blue-700 dark:text-blue-100">
                 <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
                 Built for focused HR productivity
               </p>

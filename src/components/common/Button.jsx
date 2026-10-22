@@ -26,16 +26,20 @@ const Button = ({
   children,
   className = "",
   ...props
-}) => (
-  <button
-    type={type}
-    disabled={disabled || loading}
-    className={`inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
-    {...props}
-  >
-    {loading ? <Loader size="sm" /> : Icon ? <Icon className="h-4 w-4" aria-hidden="true" /> : null}
-    <span>{children}</span>
-  </button>
-);
+}) => {
+  const hasLabel = children !== null && children !== undefined && children !== "";
+
+  return (
+    <button
+      type={type}
+      disabled={disabled || loading}
+      className={`inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      {...props}
+    >
+      {loading ? <Loader size="sm" /> : Icon ? <Icon className="h-4 w-4" aria-hidden="true" /> : null}
+      {hasLabel ? <span>{children}</span> : null}
+    </button>
+  );
+};
 
 export default Button;

@@ -7,6 +7,7 @@ import { openMobileSidebar } from "../../app/store.js";
 import useAuth from "../../hooks/useAuth.js";
 import useCompany from "../../hooks/useCompany.js";
 import Button from "../common/Button.jsx";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 const DashboardTopbar = ({ title = "Overview", subtitle = "Secure hiring workspace" }) => {
   const dispatch = useDispatch();
@@ -44,58 +45,61 @@ const DashboardTopbar = ({ title = "Overview", subtitle = "Secure hiring workspa
           <p className="text-xs text-slate-500">{subtitle}</p>
         </div>
       </div>
-      <div className="relative">
-        <button
-          type="button"
-          onClick={() => setOpen((value) => !value)}
-          className="flex items-center gap-3 rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-left"
-        >
-          <span className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-blue-100 text-xs font-bold text-blue-700">
-            {user?.profileImage ? (
-              <img src={user.profileImage} alt={user.name} className="h-full w-full object-cover" />
-            ) : (
-              initials
-            )}
-          </span>
-          <span className="hidden text-right sm:block">
-            <span className="block text-xs font-bold text-slate-900">{user?.name || "User"}</span>
-            <span className="block text-[11px] font-semibold uppercase text-slate-500">
-              {company?.name || user?.role || "role"}
+      <div className="flex items-center gap-2">
+        <ThemeToggle />
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            className="flex items-center gap-3 rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-left dark:border-slate-700 dark:bg-slate-900"
+          >
+            <span className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-blue-100 text-xs font-bold text-blue-700 dark:bg-blue-500/20 dark:text-blue-200">
+              {user?.profileImage ? (
+                <img src={user.profileImage} alt={user.name} className="h-full w-full object-cover" />
+              ) : (
+                initials
+              )}
             </span>
-          </span>
-        </button>
-        {open ? (
-          <div className="absolute right-0 mt-2 w-64 rounded-lg border border-slate-200 bg-white p-2 shadow-lg">
-            <Link
-              to={`${basePath}/profile`}
-              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
-              onClick={() => setOpen(false)}
-            >
-              <UserCircle className="h-4 w-4" /> Profile
-            </Link>
-            {user?.role === "hr" ? (
+            <span className="hidden text-right sm:block">
+              <span className="block text-xs font-bold text-slate-900 dark:text-white">{user?.name || "User"}</span>
+              <span className="block text-[11px] font-semibold uppercase text-slate-500 dark:text-slate-400">
+                {company?.name || user?.role || "role"}
+              </span>
+            </span>
+          </button>
+          {open ? (
+            <div className="absolute right-0 mt-2 w-64 rounded-lg border border-slate-200 bg-white p-2 shadow-lg dark:border-slate-700 dark:bg-slate-900">
               <Link
-                to="/dashboard/company-settings"
-                className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                to={`${basePath}/profile`}
+                className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
                 onClick={() => setOpen(false)}
               >
-                <Settings className="h-4 w-4" /> Company settings
+                <UserCircle className="h-4 w-4" /> Profile
               </Link>
-            ) : null}
-            <Link
-              to={`${basePath}/change-password`}
-              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
-              onClick={() => setOpen(false)}
-            >
-              <KeyRound className="h-4 w-4" /> Change password
-            </Link>
-            <div className="mt-2 border-t border-slate-200 pt-2">
-              <Button variant="danger" icon={LogOut} loading={loading} onClick={handleLogout} className="w-full">
-                Logout
-              </Button>
+              {user?.role === "hr" ? (
+                <Link
+                  to="/dashboard/company-settings"
+                  className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
+                  onClick={() => setOpen(false)}
+                >
+                  <Settings className="h-4 w-4" /> Company settings
+                </Link>
+              ) : null}
+              <Link
+                to={`${basePath}/change-password`}
+                className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
+                onClick={() => setOpen(false)}
+              >
+                <KeyRound className="h-4 w-4" /> Change password
+              </Link>
+              <div className="mt-2 border-t border-slate-200 pt-2 dark:border-slate-700">
+                <Button variant="danger" icon={LogOut} loading={loading} onClick={handleLogout} className="w-full">
+                  Logout
+                </Button>
+              </div>
             </div>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </div>
     </header>
   );

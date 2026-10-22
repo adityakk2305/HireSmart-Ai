@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import PageLoader from "../components/common/PageLoader.jsx";
 import useAuth from "../hooks/useAuth.js";
@@ -7,20 +6,14 @@ import useCompany from "../hooks/useCompany.js";
 const CompanyRequiredRoute = ({ children }) => {
   const location = useLocation();
   const { user } = useAuth();
-  const { hasCompany, initializing, loading, requiresOnboarding, initializeCompany } = useCompany();
+  const { hasCompany, initializing, requiresOnboarding } = useCompany();
   const isOnboardingRoute = location.pathname === "/dashboard/company-onboarding";
-
-  useEffect(() => {
-    if (user?.role === "hr") {
-      initializeCompany().catch(() => {});
-    }
-  }, [initializeCompany, user?.role]);
 
   if (user?.role !== "hr") {
     return children || <Outlet />;
   }
 
-  if (initializing || loading || (!hasCompany && !requiresOnboarding)) {
+  if (initializing || (!hasCompany && !requiresOnboarding)) {
     return <PageLoader message="Checking company setup" />;
   }
 

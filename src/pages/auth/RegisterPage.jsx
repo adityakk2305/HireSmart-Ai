@@ -111,20 +111,20 @@ const RegisterPage = () => {
   return (
     <section className="bg-slate-50 px-4 py-10 dark:bg-slate-950 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-6xl overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 lg:grid-cols-[0.9fr_1.1fr]">
-        <aside className="hidden bg-slate-950 p-10 text-white lg:flex lg:flex-col lg:justify-between">
+        <aside className="hidden bg-slate-100 p-10 text-slate-950 lg:flex lg:flex-col lg:justify-between dark:bg-slate-950 dark:text-white">
           <div>
             <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600">
               <Building2 className="h-6 w-6" aria-hidden="true" />
             </div>
             <h2 className="mt-6 text-4xl font-bold">Create your HR workspace with confidence.</h2>
-            <p className="mt-4 text-sm leading-6 text-slate-300">
+            <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">
               Start building a smarter recruitment workflow for resume screening, candidate review and team hiring decisions.
             </p>
           </div>
           <div className="grid gap-3">
             {["Secure account setup", "International phone format", "Strong password protection", "Guided company onboarding"].map((item) => (
-              <div key={item} className="flex items-center gap-3 rounded-lg bg-white/10 p-4">
-                <CheckCircle2 className="h-5 w-5 text-green-300" aria-hidden="true" />
+              <div key={item} className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-4 dark:border-transparent dark:bg-white/10">
+                <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-300" aria-hidden="true" />
                 <span className="text-sm font-semibold">{item}</span>
               </div>
             ))}

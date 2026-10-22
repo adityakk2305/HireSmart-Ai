@@ -77,13 +77,13 @@ const HomePage = () => {
 
           <div className="relative">
             <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 shadow-xl dark:border-slate-700 dark:bg-slate-900">
-              <div className="rounded-lg bg-slate-950 p-5 text-white">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+              <div className="rounded-lg bg-white p-5 text-slate-950 shadow-sm dark:bg-slate-950 dark:text-white dark:shadow-none">
+                <div className="flex items-center justify-between border-b border-slate-200 pb-4 dark:border-slate-800">
                   <div>
-                    <p className="text-sm text-slate-300">AI ranking snapshot</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-300">AI ranking snapshot</p>
                     <p className="text-2xl font-bold">Senior MERN Developer</p>
                   </div>
-                  <ShieldCheck className="h-8 w-8 text-blue-400" aria-hidden="true" />
+                  <ShieldCheck className="h-8 w-8 text-blue-600 dark:text-blue-400" aria-hidden="true" />
                 </div>
                 <div className="mt-5 grid gap-3">
                   {[
@@ -91,12 +91,12 @@ const HomePage = () => {
                     ["Nisha Rao", "Good Match", "86"],
                     ["Kabir Shah", "Average Match", "72"]
                   ].map(([name, category, score]) => (
-                    <div key={name} className="grid grid-cols-[1fr_auto] gap-3 rounded-lg bg-white/10 p-4">
+                    <div key={name} className="grid grid-cols-[1fr_auto] gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-transparent dark:bg-white/10">
                       <div>
                         <p className="font-semibold">{name}</p>
-                        <p className="mt-1 text-sm text-slate-300">{category}</p>
+                        <p className="mt-1 text-sm text-slate-500 dark:text-slate-300">{category}</p>
                       </div>
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-sm font-bold">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white dark:bg-blue-500">
                         {score}
                       </div>
                     </div>

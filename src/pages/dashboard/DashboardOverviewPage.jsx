@@ -67,6 +67,10 @@ const DashboardOverviewPage = () => {
   ];
 
   useEffect(() => {
+    document.title = "Recruiter Overview | HireSmart AI";
+  }, []);
+
+  useEffect(() => {
     getJobSummaryRequest()
       .then(setJobSummary)
       .catch(() => {

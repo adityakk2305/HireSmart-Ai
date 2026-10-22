@@ -5,7 +5,7 @@ import MobileSidebar from "../components/layout/MobileSidebar.jsx";
 import { ADMIN_LINKS } from "../utils/constants.js";
 
 const AdminLayout = () => (
-  <div className="min-h-screen bg-slate-50">
+  <div className="min-h-screen bg-slate-50 dark:bg-slate-950 dark:text-slate-100">
     <div className="flex">
       <DashboardSidebar links={ADMIN_LINKS} label="Admin console" />
       <MobileSidebar links={ADMIN_LINKS} title="Admin console" />
